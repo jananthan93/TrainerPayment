@@ -1,0 +1,30 @@
+payment initiation and payment
+
+Trainer
+	-trainer_id
+	-trainer_name
+	-account_no
+
+Training
+	-training_id (pk)
+	-trainer_id
+	-date
+	-hours_covered
+	-amount_to_paid
+	-status (initiated/process/completed)
+
+payment
+	-training_id
+	-amount_paid
+	-date_of_payment
+	-invoice_number
+
+logic
+	*when the training finished [status=initiated]
+	*when payment made [status=process]
+	*when trainer confirmed[status=complete]
+
+views
+	*HR Should see all the training history
+	*filter by status (optional)
+	
