@@ -15,6 +15,7 @@ public class PaymentInitiationMapper {
 		paymentInitiationDto.setTotalCoveredhours(initiatePayment.getTotalCoveredhours());
 		paymentInitiationDto.setTrainingTopic(initiatePayment.getTrainingTopic());
 		paymentInitiationDto.setTrainer(initiatePayment.getTrainer());
+		paymentInitiationDto.setStatus(initiatePayment.getStatus());
 		return paymentInitiationDto;
 	}
 

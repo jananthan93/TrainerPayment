@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.sgic.trainer.dto.PaymentInitiationDto;
 import com.sgic.trainer.dto.PaymentInitiationSaveDto;
+import com.sgic.trainer.entity.Trainer;
+import com.sgic.trainer.entity.TrainingSchedule;
 import com.sgic.trainer.mapper.PaymentInitiationDtoMapper;
 import com.sgic.trainer.mapper.PaymentInitiationMapper;
 import com.sgic.trainer.service.PaymentInitiationService;
@@ -30,7 +32,8 @@ public class TrainingScheduleController {
 
 	@PostMapping("/paymentInitiate")
 	public HttpStatus addPaymentInitiation(@RequestBody PaymentInitiationSaveDto paymentInitiationSaveDto) {
-		if (initiationService.addPaymentInitiation(PaymentInitiationDtoMapper.mapPaymentInitiationSaveDtoToTrainingSchedule(paymentInitiationSaveDto),
+		if (initiationService.addPaymentInitiation(
+				PaymentInitiationDtoMapper.mapPaymentInitiationSaveDtoToTrainingSchedule(paymentInitiationSaveDto),
 				trainerService.getById(paymentInitiationSaveDto.getTrainer()))) {
 			return HttpStatus.CREATED;
 		}
@@ -39,13 +42,41 @@ public class TrainingScheduleController {
 
 	@GetMapping("/paymentInitiate")
 	public ResponseEntity<List<PaymentInitiationDto>> getTrainingSchedule() {
-		return new ResponseEntity<>(PaymentInitiationMapper.mapTrainingScheduleListToPaymentInitiationDtoList(initiationService.getAllPaymentInitiation()), HttpStatus.OK);
+		return new ResponseEntity<>(PaymentInitiationMapper.mapTrainingScheduleListToPaymentInitiationDtoList(
+				initiationService.getAllPaymentInitiation()), HttpStatus.OK);
 
 	}
-//
-//	@PutMapping("/paymentInitiate/{id}")
-//	public HttpStatus editPaymentInitiation(@RequestBody TrainingSchedule initiatePayment, @PathVariable Integer id) {
-//
-//	}
 
+	@PutMapping("/paymentInitiate/{id}")
+	public HttpStatus editPaymentInitiation(@RequestBody PaymentInitiationSaveDto paymentInitiationSaveDto,
+			@PathVariable Integer id) {
+		if (initiationService.updatePaymentInitiation(
+				PaymentInitiationDtoMapper.mapPaymentInitiationSaveDtoToTrainingSchedule(paymentInitiationSaveDto),
+				trainerService.getById(paymentInitiationSaveDto.getTrainer()), id)) {
+			return HttpStatus.ACCEPTED;
+		}
+		return HttpStatus.BAD_REQUEST;
+	}
+
+	@PutMapping("/paymentInitiate/complete/{id}")
+	public HttpStatus paymentComplete(@RequestBody PaymentInitiationSaveDto paymentInitiationSaveDto,
+			@PathVariable Integer id) {
+		if (initiationService.paymentCompleted(
+				PaymentInitiationDtoMapper.mapPaymentInitiationSaveDtoToTrainingSchedule(paymentInitiationSaveDto),
+				trainerService.getById(paymentInitiationSaveDto.getTrainer()), id)) {
+			return HttpStatus.ACCEPTED;
+		}
+		return HttpStatus.BAD_REQUEST;
+	}
+
+	@PutMapping("/paymentInitiate/process/{id}")
+	public HttpStatus paymentProcess(@RequestBody PaymentInitiationSaveDto paymentInitiationSaveDto,
+			@PathVariable Integer id) {
+		if (initiationService.paymentProcess(
+				PaymentInitiationDtoMapper.mapPaymentInitiationSaveDtoToTrainingSchedule(paymentInitiationSaveDto),
+				trainerService.getById(paymentInitiationSaveDto.getTrainer()), id)) {
+			return HttpStatus.ACCEPTED;
+		}
+		return HttpStatus.BAD_REQUEST;
+	}
 }

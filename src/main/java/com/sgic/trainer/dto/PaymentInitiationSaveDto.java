@@ -9,7 +9,7 @@ public class PaymentInitiationSaveDto {
 	private String trainingTopic;
 	private Date date;
 	private Time totalCoveredhours;
-	private PaymentStatus status;
+	private PaymentStatus paymentStatus;
 	private Double amounToPaid;
 	private Integer trainer;
 	public Integer getId() {
@@ -36,11 +36,12 @@ public class PaymentInitiationSaveDto {
 	public void setTotalCoveredhours(Time totalCoveredhours) {
 		this.totalCoveredhours = totalCoveredhours;
 	}
-	public PaymentStatus getStatus() {
-		return status;
+	
+	public PaymentStatus getPaymentStatus() {
+		return paymentStatus;
 	}
-	public void setStatus(PaymentStatus status) {
-		this.status = status;
+	public void setPaymentStatus(PaymentStatus paymentStatus) {
+		this.paymentStatus = paymentStatus;
 	}
 	public Double getAmounToPaid() {
 		return amounToPaid;

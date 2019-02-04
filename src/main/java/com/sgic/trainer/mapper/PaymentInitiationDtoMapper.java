@@ -12,7 +12,7 @@ public class PaymentInitiationDtoMapper {
 		paymentInitiate.setId(paymentInitiationSaveDto.getId());
 		paymentInitiate.setTrainingTopic(paymentInitiationSaveDto.getTrainingTopic());
 		paymentInitiate.setDate(paymentInitiationSaveDto.getDate());
-		paymentInitiate.setStatus(paymentInitiationSaveDto.getStatus());
+		paymentInitiate.setStatus(paymentInitiationSaveDto.getPaymentStatus());
 		paymentInitiate.setTotalCoveredhours(paymentInitiationSaveDto.getTotalCoveredhours());
 		paymentInitiate.setAmounToPaid(paymentInitiationSaveDto.getAmounToPaid());
 		trainer.setId(paymentInitiationSaveDto.getTrainer());

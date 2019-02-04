@@ -41,17 +41,6 @@ public class PaymentInitiationServiceImpl implements PaymentInitiationService {
 		return paymentInitiationRepository.findAll();
 	}
 
-//	@Override
-//	public boolean paymentDeposited(TrainingSchedule trainingSchedule, Trainer trainer, Integer id) {
-//		if (paymentInitiationRepository.getOne(id)!=null) {
-//			trainingSchedule.setStatus(PaymentStatus.DEPOSITED);
-//			trainingSchedule.setTrainer(trainer);
-//			paymentInitiationRepository.save(trainingSchedule);
-//			return true;
-//		}
-//		return false;
-//	}
-
 	@Override
 	public boolean paymentCompleted(TrainingSchedule trainingSchedule, Trainer trainer, Integer id) {
 		if (paymentInitiationRepository.getOne(id) != null) {
@@ -61,6 +50,23 @@ public class PaymentInitiationServiceImpl implements PaymentInitiationService {
 			return true;
 		}
 		return false;
+	}
+
+	@Override
+	public boolean paymentProcess(TrainingSchedule trainingSchedule, Trainer trainer, Integer id) {
+		if (paymentInitiationRepository.getOne(id) != null) {
+			trainingSchedule.setStatus(PaymentStatus.PROCESSED);
+			trainingSchedule.setTrainer(trainer);
+			paymentInitiationRepository.save(trainingSchedule);
+			return true;
+		}
+		return false;
+	}
+
+	@Override
+	public TrainingSchedule findPaymentInitiationById(Integer id) {
+
+		return paymentInitiationRepository.findTrainingScheduleById(id);
 	}
 
 }
