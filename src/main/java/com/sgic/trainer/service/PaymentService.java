@@ -6,15 +6,13 @@ import com.sgic.trainer.entity.Payment;
 import com.sgic.trainer.entity.TrainingSchedule;
 
 public interface PaymentService {
-	
-	public boolean addPayment(Payment payment,TrainingSchedule trainingSchedule);
-	
+
+	public boolean addPayment(Payment payment, TrainingSchedule trainingSchedule);
+
 	List<Payment> getAllPayments();
-	
-	public boolean editPayment(Payment payment,TrainingSchedule trainingSchedule,Integer id );
-	
+
+	public boolean editPayment(Payment payment, TrainingSchedule trainingSchedule, Integer id);
+
 	public boolean deletePayment(Integer id);
-	
-	
-	
+
 }

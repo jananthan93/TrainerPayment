@@ -38,7 +38,7 @@ public class PaymentInitiationServiceImpl implements PaymentInitiationService {
 	@Override
 	public List<TrainingSchedule> getAllPaymentInitiation() {
 
-		return paymentInitiationRepository.findAll();
+		return paymentInitiationRepository.findTrainingScheduleOrderByDateDesc();
 	}
 
 	@Override

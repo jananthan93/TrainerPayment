@@ -10,15 +10,14 @@ import com.sgic.trainer.enums.PaymentStatus;
 import com.sgic.trainer.repository.PaymentRepository;
 
 @Service
-public class PaymentServiceImpl implements PaymentService{
+public class PaymentServiceImpl implements PaymentService {
 	@Autowired
 	private PaymentRepository paymentRepository;
 
 	@Override
 	public boolean addPayment(Payment payment, TrainingSchedule trainingSchedule) {
-		if(trainingSchedule!=null )
-		{
-			
+		if (trainingSchedule != null) {
+
 			trainingSchedule.setStatus(PaymentStatus.DEPOSITED);
 			payment.setTrainingSchedule(trainingSchedule);
 			paymentRepository.save(payment);
@@ -29,14 +28,13 @@ public class PaymentServiceImpl implements PaymentService{
 
 	@Override
 	public List<Payment> getAllPayments() {
-		
-		return paymentRepository.findAll() ;
+
+		return paymentRepository.findAll();
 	}
 
 	@Override
-	public boolean editPayment(Payment payment, TrainingSchedule trainingSchedule,Integer id) {
-		if(paymentRepository.getOne(id)!=null) 
-		{
+	public boolean editPayment(Payment payment, TrainingSchedule trainingSchedule, Integer id) {
+		if (paymentRepository.getOne(id) != null) {
 			payment.setId(id);
 			payment.setTrainingSchedule(trainingSchedule);
 			paymentRepository.save(payment);
@@ -47,8 +45,8 @@ public class PaymentServiceImpl implements PaymentService{
 
 	@Override
 	public boolean deletePayment(Integer id) {
-		Payment payment=paymentRepository.getOne(id);
-		if(payment.getId()!=null) {
+		Payment payment = paymentRepository.getOne(id);
+		if (payment.getId() != null) {
 			paymentRepository.deleteById(id);
 			return true;
 		}

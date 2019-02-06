@@ -13,9 +13,8 @@ import org.hibernate.annotations.NaturalId;
 
 import com.sgic.trainer.enums.RoleName;
 
-
 @Entity
-@Table(name = "role", schema = "payment")
+@Table(name = "role", schema = "login")
 public class Role implements Serializable {
   /**
   	 * 

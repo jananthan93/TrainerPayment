@@ -6,8 +6,8 @@ import com.sgic.trainer.entity.TrainingSchedule;
 
 public class PaymentDtoMapper {
 	public static Payment mapPaymentSaveDtoToPayment(PaymentSaveDto paymentSaveDto) {
-		Payment payment =new Payment();
-		TrainingSchedule trainingSchedule =new TrainingSchedule();
+		Payment payment = new Payment();
+		TrainingSchedule trainingSchedule = new TrainingSchedule();
 		payment.setId(paymentSaveDto.getId());
 		payment.setDateOfPayment(paymentSaveDto.getDateOfPayment());
 		payment.setAmount(paymentSaveDto.getAmount());

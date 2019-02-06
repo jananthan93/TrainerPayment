@@ -23,9 +23,10 @@ public class Trainer implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
-	@OneToOne
-	@JoinColumn(name = "user_id")
-	private User user;
+//	@OneToOne
+//	@JoinColumn(name = "user_id")
+//	private User user;
+	private String name;
 	private String position;
 	private String specializedArea;
 	private Integer accountNo;
@@ -36,12 +37,12 @@ public class Trainer implements Serializable {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public User getUser() {
-		return user;
-	}
-	public void setUser(User user) {
-		this.user = user;
-	}
+//	public User getUser() {
+//		return user;
+//	}
+//	public void setUser(User user) {
+//		this.user = user;
+//	}
 	public String getPosition() {
 		return position;
 	}
@@ -59,6 +60,12 @@ public class Trainer implements Serializable {
 	}
 	public void setAccountNo(Integer accountNo) {
 		this.accountNo = accountNo;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
 	}
 	
 	

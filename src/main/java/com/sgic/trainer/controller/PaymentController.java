@@ -44,19 +44,19 @@ public class PaymentController {
 		return new ResponseEntity<>(PaymentMapper.mapPaymentListToPaymentDtoList(paymentService.getAllPayments()),
 				HttpStatus.OK);
 	}
-	
+
 	@PutMapping("/payment/{id}")
-	public HttpStatus editPayment(@RequestBody PaymentSaveDto paymentSaveDto,@PathVariable Integer id)
-	{
+	public HttpStatus editPayment(@RequestBody PaymentSaveDto paymentSaveDto, @PathVariable Integer id) {
 		if (paymentService.editPayment(PaymentDtoMapper.mapPaymentSaveDtoToPayment(paymentSaveDto),
-				paymentInitiationService.findPaymentInitiationById(paymentSaveDto.getTrainingSchedule()),id)) {
+				paymentInitiationService.findPaymentInitiationById(paymentSaveDto.getTrainingSchedule()), id)) {
 			return HttpStatus.ACCEPTED;
 		}
 		return HttpStatus.BAD_REQUEST;
 	}
+
 	@DeleteMapping("/payment/{id}")
 	public HttpStatus deletePayment(@PathVariable Integer id) {
-		if(paymentService.deletePayment(id)) {
+		if (paymentService.deletePayment(id)) {
 			return HttpStatus.ACCEPTED;
 		}
 		return HttpStatus.BAD_REQUEST;
